@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Moodie Studio - Video Editor & Design</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#F4FAFF', 
+                            base: '#8CD1FC',  
+                            dark: '#462B21',  
+                            accent: '#DDF0FF', 
+                            white: 'rgba(255, 255, 255, 0.85)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, textad, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, button, input, textarea, select {
+            font-family: 'Mitr', sans-serif !important;
+            color: #462B21; 
+        }
+
+        .font-eng {
+            font-family: 'Fredoka', sans-serif !important;
+        }
+        .font-eng * {
+            font-family: 'Fredoka', sans-serif !important;
+        }
+
+        body {
+            background-color: #F4FAFF;
+            background-image: 
+                radial-gradient(at 10% 0%, #DDF0FF 0px, transparent 50%),
+                radial-gradient(at 90% 10%, #8CD1FC 0px, transparent 50%),
+                radial-gradient(at 50% 90%, #F7EDE2 0px, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+
+        .container-box {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 30px rgba(140, 209, 252, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .floating-nav {
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(70, 43, 33, 0.08);
+            margin-bottom: 1rem;
+        }
+
+        .tab-btn.active {
+            background-color: #8CD1FC !important;
+            color: #462B21 !important;
+            font-weight: 500;
+        }
+        
+        .work-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid #DDF0FF;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .work-link:active {
+            transform: scale(0.98);
+            background: #DDF0FF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-box">
+        
+        <nav class="floating-nav">
+            <span class="font-eng font-semibold text-lg text-brand-dark tracking-wide pl-2">Moodie</span>
+            <div class="flex gap-2 font-eng text-sm">
+                <a href="#work" class="px-3 py-1.5 rounded-full hover:bg-brand-accent/50 transition font-medium">Work</a>
+                <a href="#price" class="px-3 py-1.5 rounded-full hover:bg-brand-accent/50 transition font-medium">Step</a>
+                <a href="#contact" class="px-3 py-1.5 bg-brand-base text-brand-dark rounded-full font-medium">Contact</a>
+            </div>
+        </nav>
+
+        <header class="bento-card text-center relative overflow-hidden">
+            <svg class="absolute -top-10 -right-10 text-brand-accent/40 w-40 h-40 rotate-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            
+            <div class="relative z-10">
+                <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-[3px] border-white shadow-sm bg-brand-accent/30 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/d1QJWcXR/IMG-0738.png" alt="Moodie Logo" class="w-full h-full object-cover">
+                </div>
+
+                <div class="inline-flex items-center justify-center gap-2 bg-white/80 px-4 py-1.5 rounded-full text-xs font-medium border border-brand-accent mb-4 text-brand-dark shadow-sm">
+                    <span class="animate-pulse">🍒</span> มูดดี้ยินดีให้บริการค่ะ
+                </div>
+                
+                <h1 class="font-eng text-[2.5rem] leading-[1.1] font-bold text-brand-dark mb-1 tracking-tight">Moodie</h1>
+                <p class="font-eng text-xl text-brand-base font-semibold mb-4 tracking-widest uppercase">Studio</p>
+                
+                <p class="text-sm leading-relaxed text-brand-dark/80 max-w-[280px] mx-auto">
+                    🙇🏼‍♀️ 안녕하세요 สวัสดีค่ะ 🖐🏻꒱<br>
+                    ♡‧┈ 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐦𝐲 𝐰𝐨𝐫𝐥𝐝 ✨
+                </p>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bento-card flex flex-col justify-center items-center text-center p-5">
+                <p class="font-eng text-[10px] text-brand-dark/60 font-semibold uppercase tracking-wider mb-1">Video Editor</p>
+                <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-xl font-bold text-brand-dark">VLOG</span>
+                </div>
+                <p class="text-[10px] leading-tight text-brand-dark/70">ตัดต่อคลิปยาว / Vlog<br>รองาน 5-7 วัน</p>
+            </div>
+
+            <div class="bento-card flex flex-col justify-center items-center text-center p-5">
+                <p class="font-eng text-[10px] text-brand-dark/60 font-semibold uppercase tracking-wider mb-1">Graphic</p>
+                <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-xl font-bold text-brand-dark">ป้าย</span>
+                </div>
+                <p class="text-[10px] leading-tight text-brand-dark/70">ทำป้าย / คลิปสั้น<br>รองาน 1-3 วัน</p>
+            </div>
+            
+            <div class="bento-card col-span-2 bg-gradient-to-br from-brand-base/20 to-brand-accent/40 border-brand-base/30 relative overflow-hidden">
+                <div class="absolute top-3 right-3 bg-brand-dark text-white text-[10px] font-eng font-bold px-2 py-1 rounded-md">NOTE</div>
+                
+                <h3 class="text-base font-semibold mb-1">เงื่อนไขการจ้างงาน</h3>
+                <p class="text-xl font-bold text-brand-dark mb-3">มัดจำค่างาน 50%</p>
+                
+                <div class="grid grid-cols-1 gap-2 text-xs text-brand-dark/80">
+                    <div class="flex items-start gap-2 bg-white/50 p-2 rounded-lg">
+                        <svg class="w-4 h-4 text-brand-base shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        สามารถแก้งานได้ 1 ครั้ง (ครั้งต่อไป +20.-)
+                    </div>
+                    <div class="flex items-start gap-2 bg-white/50 p-2 rounded-lg">
+                        <svg class="w-4 h-4 text-brand-base shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        ไม่รับแก้งานหลังส่งงานเสร็จสมบูรณ์
+                    </div>
+                    <div class="flex items-start gap-2 bg-white/50 p-2 rounded-lg">
+                        <svg class="w-4 h-4 text-brand-base shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        ไม่รับคืนเงินทุกกรณี
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="work" class="bento-card p-0 overflow-hidden">
+            <div class="p-5 pb-3 border-b border-white/50">
+                <h2 class="font-eng text-xl font-bold text-brand-dark">Portfolio</h2>
+                <p class="text-xs text-brand-dark/70 mt-1">คลิกเพื่อดูโฟลเดอร์ตัวอย่างงาน</p>
+            </div>
+            
+            <div class="flex p-3 gap-2 bg-brand-light/30">
+                <button onclick="switchTab('bright')" id="btn-bright" class="tab-btn active flex-1 py-2 text-xs font-medium rounded-xl border border-brand-accent text-brand-dark bg-white transition">งานป้าย</button>
+                <button onclick="switchTab('dark')" id="btn-dark" class="tab-btn flex-1 py-2 text-xs font-medium rounded-xl border border-brand-accent text-brand-dark bg-white transition">งาน VLOG</button>
+            </div>
+
+            <div id="tab-bright" class="p-4">
+                <a href="https://drive.google.com/drive/folders/1YGVyo0SDPf9FUF7opmS9B3CuR0_2-flL?usp=sharing" target="_blank" class="work-link">
+                    <span class="text-sm">ดูตัวอย่าง <span class="font-eng font-semibold ml-1">DESIGN</span></span>
+                    <svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div id="tab-dark" class="p-4 hidden">
+                <a href="https://drive.google.com/drive/folders/1-UhpSqpRS6_nRwPu55bfLdejUeY9gwWl?usp=share_link" target="_blank" class="work-link">
+                    <span class="text-sm">ดูตัวอย่าง <span class="font-eng font-semibold ml-1">VLOG / VIDEO</span></span>
+                    <svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+            
+            <div id="tab-pastel" class="hidden"></div>
+            <button id="btn-pastel" class="hidden"></button>
+        </div>
+
+        <div id="price" class="bento-card">
+            <h2 class="text-lg font-semibold mb-4 border-b border-brand-accent pb-2">ขั้นตอนการสั่งงาน</h2>
+            
+            <div class="space-y-4 relative before:absolute before:inset-0 before:ml-3 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-brand-base before:to-transparent">
+                
+                <div class="relative flex items-start gap-4">
+                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">1</div>
+                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
+                        <b>บรีฟงาน:</b> ส่งคลิปดิบ หรือข้อมูลป้าย/ตูน/สี ที่ต้องการ
+                    </div>
+                </div>
+                
+                <div class="relative flex items-start gap-4">
+                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">2</div>
+                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
+                        <b>ประเมินราคา:</b> ทางร้านแจ้งยอด และชำระมัดจำ 50% เพื่อจองคิว
+                    </div>
+                </div>
+
+                <div class="relative flex items-start gap-4">
+                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">3</div>
+                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
+                        <b>เช็คงาน:</b> ตรวจสอบความถูกต้อง (แก้งานได้ฟรี 1 ครั้ง)
+                    </div>
+                </div>
+
+                <div class="relative flex items-start gap-4">
+                    <div class="w-6 h-6 rounded-full bg-brand-base text-brand-dark flex items-center justify-center font-eng text-xs z-10 shrink-0 mt-0.5 shadow-md">4</div>
+                    <div class="bg-white/60 p-3 rounded-xl border border-brand-accent/50 w-full text-xs">
+                        <b>ส่งงาน:</b> ชำระยอดค้าง และรับไฟล์งานคุณภาพสูง
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-5 bg-brand-accent/20 p-3 rounded-xl text-[11px] leading-relaxed">
+                <p class="font-semibold mb-1 text-brand-dark">📍 กฎของร้าน:</p>
+                <ul class="list-disc pl-4 space-y-1 text-brand-dark/80 marker:text-brand-base">
+                    <li>งดเร่งงาน ทำตามคิวเท่านั้น</li>
+                    <li>ตัด VLOG (5-7 วัน) / ป้ายและคลิปสั้น (1-3 วัน)</li>
+                    <li>แม่ค้าทำงานประจำ จะรีบตอบให้เร็วที่สุดค่ะ</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="contact" class="grid grid-cols-2 gap-3 mb-6">
+            <a href="https://www.facebook.com/cyn.rbr?" target="_blank" class="bento-card p-3 flex flex-col items-center justify-center gap-2 hover:bg-white/80 transition text-brand-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <span class="font-eng text-xs font-medium">Facebook</span>
+            </a>
+            <a href="https://line.me/ti/p/nJBFPuRN1Y" target="_blank" class="bento-card p-3 flex flex-col items-center justify-center gap-2 hover:bg-white/80 transition text-brand-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span class="font-eng text-xs font-medium">Line ID</span>
+            </a>
+        </div>
+
+        <footer class="text-center text-[10px] text-brand-dark/50 font-eng pb-6">
+            &copy; 2026 Moodie Studio. All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.getElementById('tab-bright').classList.add('hidden');
+            document.getElementById('tab-dark').classList.add('hidden');
+            
+            document.getElementById('btn-bright').classList.remove('active');
+            document.getElementById('btn-dark').classList.remove('active');
+            
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
